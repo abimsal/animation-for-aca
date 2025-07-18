@@ -1,0 +1,76 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I Love Aca</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+    }
+
+    .love {
+      position: absolute;
+      font-size: 2rem;
+      animation: float 5s linear infinite;
+      color: hsl(var(--hue), 100%, 70%);
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .text {
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 2em;
+      font-weight: bold;
+      animation: blink 2s infinite alternate;
+    }
+
+    @keyframes blink {
+      0% { color: #ff4da6; }
+      50% { color: #33ccff; }
+      100% { color: #ffff66; }
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg" />
+  </audio>
+  <div class="text">I LOVE ACA 💖</div>
+  <script>
+    const body = document.body;
+
+    function createLove() {
+      const love = document.createElement("div");
+      love.classList.add("love");
+      love.style.left = Math.random() * 100 + "vw";
+      love.style.top = Math.random() * 100 + "vh";
+      love.innerText = "❤";
+      love.style.setProperty('--hue', Math.floor(Math.random() * 360));
+      body.appendChild(love);
+
+      setTimeout(() => {
+        love.remove();
+      }, 5000);
+    }
+
+    setInterval(createLove, 300);
+  </script>
+</body>
+</html>
